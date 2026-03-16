@@ -1,0 +1,291 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0.97 0.02 90;
+  --foreground: 0.18 0.04 280;
+  --card: 1 0 0;
+  --card-foreground: 0.18 0.04 280;
+  --popover: 1 0 0;
+  --popover-foreground: 0.18 0.04 280;
+  --primary: 0.62 0.27 350;
+  --primary-foreground: 1 0 0;
+  --secondary: 0.57 0.24 255;
+  --secondary-foreground: 1 0 0;
+  --muted: 0.93 0.02 90;
+  --muted-foreground: 0.52 0.06 280;
+  --accent: 0.73 0.22 145;
+  --accent-foreground: 0.1 0.04 280;
+  --destructive: 0.62 0.24 25;
+  --destructive-foreground: 1 0 0;
+  --border: 0.87 0.04 280;
+  --input: 0.87 0.04 280;
+  --ring: 0.62 0.27 350;
+  --radius: 1.25rem;
+  --chart-1: 0.62 0.27 350;
+  --chart-2: 0.57 0.24 255;
+  --chart-3: 0.73 0.22 145;
+  --chart-4: 0.85 0.2 90;
+  --chart-5: 0.7 0.22 55;
+  --sidebar: 0.97 0.02 90;
+  --sidebar-foreground: 0.18 0.04 280;
+  --sidebar-primary: 0.62 0.27 350;
+  --sidebar-primary-foreground: 1 0 0;
+  --sidebar-accent: 0.73 0.22 145;
+  --sidebar-accent-foreground: 0.1 0.04 280;
+  --sidebar-border: 0.87 0.04 280;
+  --sidebar-ring: 0.62 0.27 350;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Nunito", system-ui, sans-serif;
+    font-weight: 700;
+    min-height: 100vh;
+    background-image: radial-gradient(
+      circle,
+      oklch(0.82 0.08 280 / 0.18) 1.5px,
+      transparent 1.5px
+    );
+    background-size: 26px 26px;
+  }
+}
+
+/* ===== Keyframes ===== */
+@keyframes confettiFall {
+  0% {
+    transform: translateY(-40px) rotate(0deg);
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@keyframes floatBob {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes letterBounce {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+  40% {
+    transform: translateY(-22px) scale(1.05);
+  }
+  60% {
+    transform: translateY(-18px) scale(1.05);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes wiggleDance {
+  0%,
+  100% {
+    transform: rotate(-6deg);
+  }
+  50% {
+    transform: rotate(6deg);
+  }
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.25);
+    filter: brightness(1.5) drop-shadow(0 0 8px gold);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 100, 100, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(255, 100, 100, 0);
+  }
+}
+
+@keyframes shakeNo {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-8px);
+  }
+  40% {
+    transform: translateX(8px);
+  }
+  60% {
+    transform: translateX(-6px);
+  }
+  80% {
+    transform: translateX(6px);
+  }
+}
+
+/* ===== Utility classes ===== */
+.animate-float-bob {
+  animation: floatBob 3s ease-in-out infinite;
+}
+.animate-letter-bounce {
+  animation: letterBounce 1.3s ease-in-out infinite;
+}
+.animate-pop-in {
+  animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+.animate-wiggle-dance {
+  animation: wiggleDance 0.9s ease-in-out infinite;
+}
+.animate-sparkle {
+  animation: sparkle 1.8s ease-in-out infinite;
+}
+.animate-slide-up {
+  animation: slideUp 0.35s ease-out forwards;
+}
+.animate-pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+.animate-shake-no {
+  animation: shakeNo 0.5s ease-in-out;
+}
+
+.kid-card {
+  @apply rounded-3xl border-4 shadow-lg transition-all duration-150 cursor-pointer select-none;
+}
+.kid-card:hover {
+  transform: translateY(-5px) scale(1.04);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.22);
+}
+.kid-card:active {
+  transform: scale(0.95);
+}
+
+.kid-button {
+  @apply rounded-2xl font-black text-white shadow-lg transition-all duration-100 border-b-4 cursor-pointer select-none;
+  min-height: 60px;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+}
+.kid-button:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.08);
+}
+.kid-button:active {
+  transform: translateY(2px);
+  border-bottom-width: 1px;
+}
+
+.letter-tile {
+  @apply rounded-2xl border-4 font-black shadow-md transition-all duration-100 cursor-pointer select-none flex items-center justify-center;
+  min-width: 54px;
+  min-height: 54px;
+  font-size: 1.35rem;
+}
+.letter-tile:hover {
+  transform: scale(1.12);
+}
+.letter-tile:active {
+  transform: scale(0.92);
+}
+.letter-tile.selected {
+  transform: scale(1.15);
+  box-shadow: 0 0 0 4px white, 0 0 0 8px oklch(0.62 0.27 350);
+}
+
+.letter-slot {
+  @apply rounded-2xl border-4 border-dashed font-black flex items-center justify-center transition-all duration-150;
+  min-width: 54px;
+  min-height: 54px;
+  font-size: 1.35rem;
+}
+.letter-slot.filled {
+  border-style: solid;
+}
+.letter-slot.correct {
+  background-color: oklch(0.85 0.18 145);
+  border-color: oklch(0.55 0.22 145);
+}
+.letter-slot.wrong {
+  background-color: oklch(0.9 0.18 25);
+  border-color: oklch(0.6 0.22 25);
+}
+
+.speech-bubble {
+  position: relative;
+  background: white;
+  border: 3px solid oklch(0.62 0.27 350);
+  border-radius: 14px;
+  padding: 7px 13px;
+  font-weight: 800;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+.speech-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 8px solid transparent;
+  border-top-color: oklch(0.62 0.27 350);
+}
+.speech-bubble::before {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 7px solid transparent;
+  border-top-color: white;
+  z-index: 1;
+}
